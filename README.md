@@ -15,5 +15,6 @@ Operacijos
 - 5. Admin panel kur bus galima matyt visus darbuotojus - Nedas
 
 Idėjos skaidres - Nedas (Done)
+
 Final pristatymo skaidres - Liudas ir Kristijonas
 
