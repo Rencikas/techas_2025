@@ -89,7 +89,7 @@ arba
 
 ---
 
-##📚 Naudojamos technologijos
+## 📚 Naudojamos technologijos
 **Programavimo kalba:** C
 **Kompiliatoriai:**
 clang (macOS)
