@@ -91,8 +91,13 @@ arba
 
 ## 📚 Naudojamos technologijos
 **Programavimo kalba:** C
+
 **Kompiliatoriai:**
+
 clang (macOS)
+
 gcc (Windows / MinGW)
+
 **Duomenų saugojimas:** tekstiniai .txt failai
+
 **Architektūra:** modulinė (protokolų principu)
