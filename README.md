@@ -70,7 +70,7 @@ Konsolinė taikomoji programa, realizuota C programavimo kalba, skirta automobil
 
 **Kompiliavimas:**
 
-gcc main.c login.c admin.c crypto.c -o project
+gcc main.c login.c admin.c -o project
 
 **Paleidimas:**
 ./project
@@ -80,7 +80,7 @@ gcc main.c login.c admin.c crypto.c -o project
 (Reikalingas įdiegtas MinGW / GCC)
 
 **Kompiliavimas:**
-gcc main.c login.c admin.c crypto.c -o project.exe
+gcc main.c login.c admin.c -o project.exe
 
 **Paleidimas:**
 project.exe
