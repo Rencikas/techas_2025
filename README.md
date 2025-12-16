@@ -81,7 +81,7 @@ gcc main.c login.c admin.c util.c car.c -o project
 (Reikalingas įdiegtas MinGW / GCC)
 
 **Kompiliavimas:**
-gcc main.c login.c admin.c util.c car.c -o project.exe
+gcc main.c login.c admin.c car.c car.h registration.c registration.h filtravimas.c filtravimas.h valdymas.c valdymas.h -o project.exe
 
 **Paleidimas:**
 project.exe

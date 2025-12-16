@@ -4,6 +4,7 @@
 #include "admin.h"
 #include "car.h"
 #include "registration.h"
+#include "valdymas.h"
 
 int main() {
     Session session;
@@ -37,6 +38,12 @@ int main() {
             printf("Kiek automobiliu parodyti? (0 - visi): ");
             scanf("%d", &limit);
             getVehicles(cars, vehAmount, limit);
+        } else if (choice == 3) {
+            getchar();
+            showFilterMenu(cars, vehAmount);
+        } else if (choice == 4) {
+            getchar();
+            showValdymoMenu(cars, &vehAmount);
         } else if (choice == 5 && strcmp(session.role, "ADMIN") == 0) {
             admin_panel();
         }
