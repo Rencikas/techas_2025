@@ -6,7 +6,7 @@ int loadVehicles(Car cars[], int max) {
     FILE *f = fopen("data/cars.txt", "r");
     if (!f) return 0;
     int count = 0;
-    while (count < max && fscanf(f, "%31s %31s %31s %31s %31s %19s %19s", cars[count].number, cars[count].make, cars[count].color, cars[count].fuel, cars[count].category, cars[count].reg_timestamp, cars[count].inspection_expiry) >= 5) {
+    while (count < max && fscanf(f, "%31[^,],%31[^,],%31[^,],%31[^,],%31[^,],%19[^,],%19[^\n]\n", cars[count].number, cars[count].make, cars[count].color, cars[count].fuel, cars[count].category, cars[count].reg_timestamp, cars[count].inspection_expiry) == 7) {
         if (strlen(cars[count].reg_timestamp) == 0) strcpy(cars[count].reg_timestamp, "-");
         if (strlen(cars[count].inspection_expiry) == 0) strcpy(cars[count].inspection_expiry, "-");
         count++;
@@ -19,7 +19,7 @@ int saveVehicles(Car cars[], int count) {
     FILE *f = fopen("data/cars.txt", "w");
     if (!f) return 0;
     for (int i = 0; i < count; i++) {
-        fprintf(f, "%s %s %s %s %s %s %s\n", cars[i].number, cars[i].make, cars[i].color, cars[i].fuel, cars[i].category, cars[i].reg_timestamp, cars[i].inspection_expiry);
+        fprintf(f, "%s,%s,%s,%s,%s,%s,%s\n", cars[i].number, cars[i].make, cars[i].color, cars[i].fuel, cars[i].category, cars[i].reg_timestamp, cars[i].inspection_expiry);
     }
     fclose(f);
     return 1;
