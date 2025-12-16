@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "login.h"
 #include "admin.h"
 #include "car.h"
@@ -14,8 +15,9 @@ int main() {
         return 0;
     }
 
-    Car cars[MAX_CARS];
-    int vehAmount = loadVehicles(cars, MAX_CARS);
+    Car *cars = NULL;
+    int vehAmount = 0;
+    loadVehicles(&cars, &vehAmount);
     int choice;
 
     do {
@@ -32,7 +34,7 @@ int main() {
 
         if (choice == 1) {
             getchar();
-            registerVehicle(cars, &vehAmount);
+            registerVehicle(&cars, &vehAmount);
         } else if (choice == 2) {
             int limit;
             printf("Kiek automobiliu parodyti? (0 - visi): ");
@@ -50,6 +52,7 @@ int main() {
     } while (choice != 0);
 
     saveVehicles(cars, vehAmount);
+    free(cars);
     printf("Programa baigta.\n");
 
     return 0;

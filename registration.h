@@ -2,6 +2,6 @@
 #define REGISTRATION_H
 #include "car.h"
 
-int registerVehicle(Car cars[], int *car_count);
+int registerVehicle(Car **cars, int *car_count);
 
 #endif

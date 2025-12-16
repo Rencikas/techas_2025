@@ -1,7 +1,6 @@
 #ifndef CAR_H
 #define CAR_H
 
-#define MAX_CARS 1000
 #define MAX_STR 32
 
 #include <time.h>
@@ -16,11 +15,11 @@ typedef struct {
     char inspection_expiry[20];
 } Car;
     
-int loadVehicles(Car cars[], int max);
-int saveVehicles(Car cars[], int count);
-int addVehicle(Car cars[], int *count, Car new_car);
+int loadVehicles(Car **cars, int *size);
+int saveVehicles(Car *cars, int count);
+int addVehicle(Car **cars, int *count, Car new_car);
 void getVehicle(const Car *car);
-void getVehicles(const Car cars[], int count, int limit);
-int searchVehicles(const Car cars[], int count, const char *field, const char *value, int results[], int max_results);
+void getVehicles(const Car *cars, int count, int limit);
+int searchVehicles(const Car *cars, int count, const char *field, const char *value, int *results, int max_results);
 
 #endif

@@ -14,11 +14,11 @@ static void readString(const char *prompt, char *out, int max) {
     }
 }
 
-void showFilterMenu(Car cars[], int count) {
+void showFilterMenu(Car *cars, int count) {
     interactiveFilterMenu(cars, count);
 }
 
-void showValdymoMenu(Car cars[], int *count) {
+void showValdymoMenu(Car *cars, int *count) {
     int ch = -1;
     while (ch != 0) {
         printf("-- Valdymo meniu --\n");

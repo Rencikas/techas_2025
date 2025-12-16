@@ -95,14 +95,14 @@ static int getInspectionInterval(const char *category) {
     return interval;
 }
 
-static int findCarByPlate(Car cars[], int count, const char *plate) {
+static int findCarByPlate(Car *cars, int count, const char *plate) {
     for (int i = 0; i < count; i++) {
         if (strcmp(cars[i].number, plate) == 0) return i;
     }
     return -1;
 }
 
-int registerVehicle(Car cars[], int *car_count) {
+int registerVehicle(Car **cars, int *car_count) {
     Car new_car;
 
     readLine("\nValstybiniai numeriai: ", new_car.number, sizeof(new_car.number), isValidPlate, "Numeriuose turi buti bent vienas skaicius ir negali buti tuscias!");
@@ -140,14 +140,13 @@ int registerVehicle(Car cars[], int *car_count) {
     strftime(new_car.inspection_expiry, sizeof(new_car.inspection_expiry), "%Y-%m-%d", &expiry);
 
     // Saugome arba atnaujiname automobili
-    int index = findCarByPlate(cars, *car_count, new_car.number);
-    
+    int index = findCarByPlate(*cars, *car_count, new_car.number);
     if (index >= 0) {
-        cars[index] = new_car;
-        saveVehicles(cars, *car_count);
+        (*cars)[index] = new_car;
+        saveVehicles(*cars, *car_count);
         printf("Automobilio duomenys atnaujinti!\n");
     } else if (addVehicle(cars, car_count, new_car)) {
-        saveVehicles(cars, *car_count);
+        saveVehicles(*cars, *car_count);
         printf("Automobilis uzregistruotas!\n");
     } else {
         printf("Nepavyko uzregistruoti (duomenu bazes limitas)!\n");

@@ -81,7 +81,7 @@ static int matchFilter(const Car *car, const Filter *f) {
     return 0;
 }
 
-int filterCars(const Car cars[], int count, const Filter filters[], int nfilters, int results[], int max_results) {
+int filterCars(const Car *cars, int count, const Filter *filters, int nfilters, int *results, int max_results) {
     int found = 0;
     for (int i = 0; i < count && found < max_results; i++) {
         int ok = 1;
@@ -99,7 +99,7 @@ static void trim_newline(char *s) {
     if (l > 0 && s[l-1] == '\n') s[l-1] = '\0';
 }
 
-void interactiveFilterMenu(Car cars[], int count) {
+void interactiveFilterMenu(Car *cars, int count) {
     Filter filters[3];
     for (int i = 0; i < 3; i++) { filters[i].field[0] = '\0'; filters[i].value[0] = '\0'; }
     int nfilters = 0;
@@ -140,14 +140,18 @@ void interactiveFilterMenu(Car cars[], int count) {
         nfilters++;
     }
 
-    int results[MAX_CARS];
-    int found = filterCars(cars, count, filters, nfilters, results, MAX_CARS);
-    if (found == 0) {
+    int *results = count > 0 ? malloc(count * sizeof(int)) : NULL;
+    int found = 0;
+    if (results) found = filterCars(cars, count, filters, nfilters, results, count);
+    
+    if (!results || found == 0) {
         printf("Nerasta atitikmenu.\n");
+        if (results) free(results);
         return;
     }
     printf("Rasta %d irasu:\n", found);
     for (int i = 0; i < found; i++) {
         getVehicle(&cars[results[i]]);
     }
+    free(results);
 }
