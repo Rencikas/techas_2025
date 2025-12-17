@@ -70,8 +70,7 @@ Konsolinė taikomoji programa, realizuota C programavimo kalba, skirta automobil
 
 **Kompiliavimas:**
 
-gcc main.c login.c admin.c util.c car.c -o project
-
+gcc main.c login.c admin.c car.c filtravimas.c registration.c valdymas.c -o project
 
 **Paleidimas:**
 ./project
